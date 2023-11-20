@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+long long n,x,y,numarator=0,numitor=0,u,r,i,a,b,t,z;
+
+int cmmmc(int a, int b)
+{
+    int r;
+    u=a*b;
+    while(b!=0)
+    {
+        r=a%b;
+        a=b;
+        b=r;
+    }
+    return u/a;
+}
+
+int main()
+{
+    cin>>n;
+    cin>>numarator>>numitor;
+    for(i=1;i<=n-1;i++)
+    {
+        cin>>x>>y;
+        z=x;
+        t=y;
+        while(t!=0)
+        {
+            r=z%t;
+            z=t;
+            t=r;
+        }
+        x=x/z;
+        y=y/z;
+        numarator=cmmmc(y,numitor)/numitor*numarator;
+        numitor=cmmmc(y,numitor);
+        x=cmmmc(y,numitor)/y*x;
+        y=cmmmc(y,numitor);
+        numarator+=x;
+    }
+    
+        z=numarator;
+        t=numitor;
+        while(t!=0)
+        {
+            r=z%t;
+            z=t;
+            t=r;
+        }
+        numarator=numarator/z;
+        numitor=numitor/z;
+    cout<<numarator<<" "<<numitor;   
+
+    return 0;
+}
